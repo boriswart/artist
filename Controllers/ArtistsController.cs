@@ -29,6 +29,19 @@ namespace artist.Controllers
       }
     }
 
+    [HttpGet("{id}")]
+    public ActionResult<Artist> GetArtist(int id)
+    {
+      try
+      {
+        Artist artist = _as.GetOne(id);
+        return Ok(artist);
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
 
     [HttpPost]
     public ActionResult<Artist> CreateArtist([FromBody] Artist artistData)
@@ -43,5 +56,35 @@ namespace artist.Controllers
         return BadRequest(e.Message);
       }
     }
+    [HttpPut("{id}")]
+    public ActionResult<Artist> update(int id, [FromBody] Artist artist)
+    {
+      try
+      {
+        return Ok(_as.Update(id, artist));
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpDelete("{id}")]
+    public ActionResult<Artist> delete(int id)
+    {
+      try
+      {
+        return Ok(_as.Delete(id));
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+
+
+
+
   }
 }

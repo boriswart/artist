@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS artists(
   birthYear int NOT NULL COMMENT 'Year of Birth',
   deathYear int COMMENT 'Year of Death'
 ) default charset utf8 comment '';
-select *
+select
+  *
 from
   artists;
 CREATE TABLE IF NOT EXISTS pieces(
@@ -30,38 +31,58 @@ VALUES("Raphael Sanzio da Urbino", 1483, 1520);
 INSERT INTO
   artists(name, birthYear, deathYear)
 VALUES("Leo", 1452, 1519);
--- -- GET ALL
-  -- SELECT
-  --   id,
-  --   name,
-  --   birthYear
-  -- FROM
-  --   artists;
-  -- -- ORDER BY birthYear DESC;
-  --   -- GET ONE BY ID
-  -- SELECT
-  --   *
-  -- FROM
-  --   artists
-  -- WHERE
-  --   id = 1;
-  -- UPDATE
-  --   artists
-  -- SET
-  --   name = "Leo"
-  -- WHERE
-  --   id = 2;
-  -- SELECT
-  --   *
-  -- FROM
-  --   artists
-  -- WHERE
-  --   birthYear < 1480;
-  -- -- DELETE FROM artists WHERE name = "Leo" AND birthYear < 1900;
-  -- INSERT INTO pieces (title, artistId)
-  -- VALUES ("The Last Judgment", 1);
-  -- SELECT
-  --     p.*,
-  --     a.name as "ArtistName"
-  -- FROM pieces p
-  -- JOIN artists a ON a.id = p.artistId;
+
+
+
+-- GET ALL
+SELECT
+  id,
+  name,
+  birthYear
+FROM
+  artists,
+ORDER BY
+  birthYear DESC;
+
+
+
+-- GET ONE BY ID
+SELECT
+  *
+FROM
+  artists
+WHERE
+  id = 1;
+
+
+  
+UPDATE
+  artists
+SET
+  name = "Leo"
+WHERE
+  id = 2;
+
+
+SELECT
+  *
+FROM
+  artists
+WHERE
+  birthYear < 1480;
+
+
+
+ DELETE FROM artists WHERE name = "Leo" AND birthYear < 1900;
+
+ 
+INSERT INTO
+  pieces (title, artistId)
+VALUES
+  ("The Last Judgment", 1);
+SELECT
+  p.*,
+  a.name as "ArtistName"
+FROM
+  pieces p
+  JOIN artists a ON a.id = p.artistId;

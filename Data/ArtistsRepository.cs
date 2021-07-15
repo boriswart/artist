@@ -21,6 +21,14 @@ namespace artist.Data
       return _db.Query<Artist>(sql).ToList();
     }
 
+    public Artist GetOne(int id)
+    {
+      var sql = @"SELECT * FROM artists
+                WHERE id = @id 
+      ";
+      return _db.QueryFirstOrDefault<Artist>(sql, new { id });
+    }
+
     public Artist Create(Artist artistData)
     {
       var sql = @"
@@ -44,6 +52,47 @@ namespace artist.Data
 
     }
 
+
+
+    public int Update(int id, Artist artist)
+    {
+      var sql = @"
+            UPDATE artists
+            SET 
+            name = @Name,
+            birthYear = @BirthYear,
+            deathYear = @DeathYear
+            WHERE id = @id;
+            SELECT LAST_INSERT_ID();
+            ";
+      // _db.Execute(sql, artist);
+      return _db.ExecuteScalar<int>(sql, new { id, artist.Name, artist.BirthYear, artist.DeathYear });
+    }
+
+
+
+    public void Delete(int id)
+    {
+      string sql = @"DELETE * FROM 
+      artists 
+      LIMIT 1
+      WHERE id = @id
+      ";
+
+      _db.Execute(sql, new { id });
+    }
+
+
+
+
+
+
   }
+
+
+
+
+
+
 
 }
