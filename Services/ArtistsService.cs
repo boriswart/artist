@@ -34,7 +34,7 @@ namespace artist.Services
     {
       artist.Id = id;
       Artist original = GetOne(id);
-      if (original.Name == null)
+      if (original == null)
       {
         throw new Exception("Invalid Id");
       }
