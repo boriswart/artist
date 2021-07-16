@@ -73,10 +73,11 @@ namespace artist.Data
 
     public void Delete(int id)
     {
-      string sql = @"DELETE * FROM 
+      string sql = @"
+      DELETE FROM 
       artists 
-      LIMIT 1
       WHERE id = @id
+      LIMIT 1;
       ";
 
       _db.Execute(sql, new { id });

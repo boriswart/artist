@@ -31,9 +31,6 @@ VALUES("Raphael Sanzio da Urbino", 1483, 1520);
 INSERT INTO
   artists(name, birthYear, deathYear)
 VALUES("Leo", 1452, 1519);
-
-
-
 -- GET ALL
 SELECT
   id,
@@ -43,9 +40,6 @@ FROM
   artists,
 ORDER BY
   birthYear DESC;
-
-
-
 -- GET ONE BY ID
 SELECT
   *
@@ -53,17 +47,12 @@ FROM
   artists
 WHERE
   id = 1;
-
-
-  
 UPDATE
   artists
 SET
   name = "Leo"
 WHERE
   id = 2;
-
-
 SELECT
   *
 FROM
@@ -71,11 +60,16 @@ FROM
 WHERE
   birthYear < 1480;
 
+  
+DELETE
+FROM
+  artists
+WHERE
+  id = 5
+  limit 1;
 
 
- DELETE FROM artists WHERE name = "Leo" AND birthYear < 1900;
 
- 
 INSERT INTO
   pieces (title, artistId)
 VALUES
