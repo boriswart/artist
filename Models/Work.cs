@@ -9,7 +9,7 @@ namespace artist.Models
 
     [Required]
     public int ArtistId { get; set; }
-    public string Name { get; set; }
+    public string title { get; set; }
     public string ImgUrl { get; set; }
   }
 }

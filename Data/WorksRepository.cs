@@ -16,20 +16,33 @@ namespace artist.Data
     {
       _db = db;
     }
-
-    internal int Create(Work work)
+    public int Create(Work work)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      INSERT INTO works
+      (artistId, title, imgUrl)
+      VALUES
+      (@artistId, @title, @ImgUrl);
+      SELECT LAST_INSERT_ID();
+      ";
+      return _db.ExecuteScalar<int>(sql, work);
     }
 
-    internal List<Work> GetWorksByArtistId(int artistId)
+    public List<Work> GetWorksByArtistId(int artistId)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      SELECT * FROM works
+      WHERE artistId = @ArtistId;
+      ";
+      return _db.Query<Work>(sql, new { artistId }).ToList();
     }
-
-    internal Work GetWorkById(int id)
+    public Work GetWorkById(int id)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      SELECT * FROM works
+      WHERE Id = @id;
+      ";
+      return _db.QueryFirstOrDefault<Work>(sql, new { id });
     }
   }
 }
