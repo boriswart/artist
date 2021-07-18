@@ -49,9 +49,11 @@ namespace artist
 
       //repos
       services.AddTransient<ArtistsRepository>();
+      services.AddTransient<WorksRepository>();
 
       //services
       services.AddTransient<ArtistsService>();
+      services.AddTransient<WorksService>();
 
     }
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
