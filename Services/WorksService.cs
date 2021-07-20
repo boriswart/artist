@@ -11,12 +11,12 @@ namespace artist.Services
 
     private readonly WorksRepository _repo;
 
-    private readonly WorksService _worksService;
+    private readonly ArtistsService _artistsService;
 
-    public WorksService(WorksRepository repo, WorksService worksService)
+    public WorksService(WorksRepository repo, ArtistsService artistsService)
     {
       _repo = repo;
-      _worksService = worksService;
+      _artistsService = artistsService;
     }
 
     public Work Create(Work work)
